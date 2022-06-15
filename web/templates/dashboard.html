@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block tab_title%}Afoirm · Dashboard{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="h4">Your Foirms</h4>
+            {% if user_forms|length !=0 %}  
+            <table class="table">
+                <tbody>
+                    {% for form in user_forms %}
+                    <tr>
+                        <td><a href="{{ url_for('view_foirms',form_id=form.form_id, field_id='  None') }}" style="text-decoration: none;" class="h2">{{ form.name }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <h3 class="display-5">No Foirms found</h3>
+            {% endif %}
+            <a href="/create-foirm" class='btn btn-primary'>Create Foirm</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
